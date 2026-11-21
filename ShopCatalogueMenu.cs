@@ -70,7 +70,7 @@ internal sealed class ShopCatalogueMenu : IClickableMenu
         {
             if (!b.containsPoint(x, y)) continue;
             exitThisMenu(false);
-            if (!Utility.TryOpenShopMenu(b.name, Game1.currentLocation, true))
+            if (!Utility.TryOpenShopMenu(b.name, null, playOpenSound: true))
                 Game1.addHUDMessage(new HUDMessage($"Gagal buka: {b.label}", HUDMessage.error_type));
             return;
         }
