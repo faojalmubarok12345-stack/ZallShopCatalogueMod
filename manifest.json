@@ -1,0 +1,10 @@
+{
+  "Name": "Zall Shop Catalogue",
+  "Author": "Zall",
+  "Version": "1.0.0",
+  "Description": "Item katalog untuk membuka toko di Stardew Valley.",
+  "UniqueID": "zall.shopcatalogue",
+  "EntryDll": "ZallShopCatalogueMod.dll",
+  "MinimumApiVersion": "4.1.0",
+  "UpdateKeys": []
+}
