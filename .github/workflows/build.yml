@@ -13,19 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '6.0.x'
+      - name: Add SMAPI build environment
+        uses: Pathoschild/SMAPI-ModBuildWorkflow/add-build-environment@main
 
-      - name: Prepare dummy game folder
-        run: mkdir -p ./fake-game
-
-      - name: Restore dependencies
-        run: dotnet restore ZallShopCatalogueMod.csproj -p:GamePath=./fake-game
+      - name: Add reference assemblies
+        uses: Pathoschild/SMAPI-ModBuildWorkflow/add-reference-assemblies@main
 
       - name: Build release DLL
-        run: dotnet build ZallShopCatalogueMod.csproj -c Release -o ./output -p:GamePath=./fake-game
+        run: dotnet build ZallShopCatalogueMod.csproj -c Release -o ./output
 
       - name: Upload built mod artifact
         uses: actions/upload-artifact@v4
