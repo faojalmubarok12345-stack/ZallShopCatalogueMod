@@ -28,17 +28,20 @@ public class ModEntry : Mod
             e.Edit(asset =>
             {
                 var data = asset.AsDictionary<string, ObjectData>().Data;
-                data.TryAdd(ItemId, new ObjectData
+                if (!data.ContainsKey(ItemId))
                 {
-                    Name = "ShopCatalogue",
-                    DisplayName = "Universal Shop Catalogue",
-                    Description = "Buka berbagai toko kapan saja.",
-                    Type = "Basic",
-                    Category = 0,
-                    Price = 2500,
-                    Texture = "Mods/zall.shopcatalogue/item",
-                    SpriteIndex = 0
-                });
+                    data[ItemId] = new ObjectData
+                    {
+                        Name = "ShopCatalogue",
+                        DisplayName = "Universal Shop Catalogue",
+                        Description = "Buka berbagai toko kapan saja.",
+                        Type = "Basic",
+                        Category = 0,
+                        Price = 2500,
+                        Texture = "Mods/zall.shopcatalogue/item",
+                        SpriteIndex = 0
+                    };
+                }
             });
         }
     }
