@@ -7,8 +7,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+       - name: Build release DLL
+     run: dotnet build ZallShopCatalogueMod.csproj -c Release -o ./output -p:EnableGamePath=false -p:GamePath=""
+     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
