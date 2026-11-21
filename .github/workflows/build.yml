@@ -18,11 +18,14 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
+      - name: Prepare dummy game folder
+        run: mkdir -p ./fake-game
+
       - name: Restore dependencies
-        run: dotnet restore ZallShopCatalogueMod.csproj -p:EnableGamePath=false -p:GamePath=""
+        run: dotnet restore ZallShopCatalogueMod.csproj -p:GamePath=./fake-game
 
       - name: Build release DLL
-        run: dotnet build ZallShopCatalogueMod.csproj -c Release -o ./output -p:EnableGamePath=false -p:GamePath=""
+        run: dotnet build ZallShopCatalogueMod.csproj -c Release -o ./output -p:GamePath=./fake-game
 
       - name: Upload built mod artifact
         uses: actions/upload-artifact@v4
