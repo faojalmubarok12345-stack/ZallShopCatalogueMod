@@ -7,9 +7,8 @@ on:
 
 jobs:
   build:
-       - name: Build release DLL
-     run: dotnet build ZallShopCatalogueMod.csproj -c Release -o ./output -p:EnableGamePath=false -p:GamePath=""
-     
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,10 +19,10 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore ZallShopCatalogueMod.csproj
+        run: dotnet restore ZallShopCatalogueMod.csproj -p:EnableGamePath=false -p:GamePath=""
 
       - name: Build release DLL
-        run: dotnet build ZallShopCatalogueMod.csproj -c Release -o ./output
+        run: dotnet build ZallShopCatalogueMod.csproj -c Release -o ./output -p:EnableGamePath=false -p:GamePath=""
 
       - name: Upload built mod artifact
         uses: actions/upload-artifact@v4
